@@ -17,7 +17,7 @@ function getHighestFours(data) {
 
     let playerName;
     let noOfFours;
-    let economyOfThePlayer;
+    let strikeRate;
 
     for(let i = 0 ; i < bothBattingTables.length ; i++) {
         battingTables = myDocument(bothBattingTables[i]);
@@ -28,23 +28,23 @@ function getHighestFours(data) {
             if(i == 0 && j == 0) {
                 playerName = myDocument(allTds[0]).find("a").text();
                 noOfFours = myDocument(allTds[5]).text();
-                economyOfThePlayer = myDocument(allTds[7]).text();
+                strikeRate = myDocument(allTds[7]).text();
             }
 
             else {
                 let curNoOfFours = myDocument(allTds[5]).text();
-                let curEconomyOfThePlayer = myDocument(allTds[7]).text();
+                let curStrikeRate = myDocument(allTds[7]).text();
 
                 if(curNoOfFours > noOfFours) {
                     playerName = myDocument(allTds[0]).find("a").text();
                     noOfFours = curNoOfFours;
-                    economyOfThePlayer = myDocument(allTds[7]).text();
+                    strikeRate = myDocument(allTds[7]).text();
                 }
 
-                else if(curNoOfFours == noOfFours && curEconomyOfThePlayer < economyOfThePlayer) {
+                else if(curNoOfFours == noOfFours && curStrikeRate < strikeRate) {
                     playerName = myDocument(allTds[0]).find("a").text();
-                    noOfFours = myDocument(allTds[5]).text();
-                    economyOfThePlayer = curEconomyOfThePlayer;
+                    noOfFours = curNoOfFours;
+                    strikeRate = curStrikeRate;
                 }
             }
         }
@@ -52,7 +52,7 @@ function getHighestFours(data) {
 
     console.log("Name of the Player = " + playerName);
     console.log("No. of Fours = " + noOfFours);
-    console.log("Economy = " + economyOfThePlayer);
+    console.log("Strike Rate = " + strikeRate);
 
 }
 
