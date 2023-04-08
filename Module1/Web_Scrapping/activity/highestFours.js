@@ -50,9 +50,9 @@ function getHighestFours(data) {
         }
     }
 
-    console.log("Name if the Player = " + playerName);
-    console.log("NO. of Fours = " + noOfFours);
-    console.log("Economy of the Player = " + economyOfThePlayer);
+    console.log("Name of the Player = " + playerName);
+    console.log("No. of Fours = " + noOfFours);
+    console.log("Economy = " + economyOfThePlayer);
 
 }
 
