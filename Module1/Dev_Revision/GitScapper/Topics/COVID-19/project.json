@@ -1,0 +1,42 @@
+[
+    {
+        "projectName": "COVID-19",
+        "projectLink": "https://github.com/CSSEGISandData/COVID-19"
+    },
+    {
+        "projectName": "covid-19-data",
+        "projectLink": "https://github.com/nytimes/covid-19-data"
+    },
+    {
+        "projectName": "covid19india-react",
+        "projectLink": "https://github.com/covid19india/covid19india-react"
+    },
+    {
+        "projectName": "covid19",
+        "projectLink": "https://github.com/tokyo-metropolitan-gov/covid19"
+    },
+    {
+        "projectName": "covid-19-data",
+        "projectLink": "https://github.com/owid/covid-19-data"
+    },
+    {
+        "projectName": "COVID-19",
+        "projectLink": "https://github.com/pcm-dpc/COVID-19"
+    },
+    {
+        "projectName": "covid-chestxray-dataset",
+        "projectLink": "https://github.com/ieee8023/covid-chestxray-dataset"
+    },
+    {
+        "projectName": "API",
+        "projectLink": "https://github.com/disease-sh/API"
+    },
+    {
+        "projectName": "corona",
+        "projectLink": "https://github.com/geohot/corona"
+    },
+    {
+        "projectName": "app",
+        "projectLink": "https://github.com/WorldHealthOrganization/app"
+    }
+]
