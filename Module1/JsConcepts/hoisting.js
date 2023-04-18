@@ -1,5 +1,5 @@
 // HOISTING --> mechanism of accessing variable before the initailization
-// Var -->
+// Var --> Function Scope
 
 console.log(a);
 var a = "name";
@@ -7,7 +7,7 @@ console.log(a);
 
 // Hoisting is possible in var
 
-// Let and Const -->
+// Let and Const --> Blocked Scope
 
 // console.log(a);
 // let a = "name";
