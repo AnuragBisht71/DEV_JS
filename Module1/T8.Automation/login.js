@@ -26,6 +26,32 @@ browserOpenPromise.then(function(browser) {
 .then(function() {
     return tab.click(".ui-btn.ui-btn-large.ui-btn-primary.auth-button.ui-btn-styled");
 })
+// .then(function() {
+//     return tab.waitForSelector(".ui-btn.ui-btn-normal.ui-btn-primary" , {visible: true});
+// })
+// .then(function() {
+//     return tab.click(".ui-btn.ui-btn-normal.ui-btn-primary");
+// })
 .then(function() {
-    console.log("logged in !!");
+    return waithAndClick(".ui-btn.ui-btn-normal.ui-btn-primary");
 })
+.catch(function() {
+    console.log(err);
+})
+
+function waithAndClick(selector) {
+    return new Promise(function(scb , fcb){
+        let waitPromise = tab.waitForSelector(selector , {visible: true});
+        waitPromise.then(function(){
+            return tab.click(selector);
+        })
+        .then(function(){
+            scb();
+        })
+        .catch(function(){
+            fcb();
+        })
+    })
+}
+
+
