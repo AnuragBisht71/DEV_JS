@@ -35,7 +35,29 @@ browserOpenPromise.then(function(browser) {
 .then(function() {
     return waithAndClick(".ui-btn.ui-btn-normal.ui-btn-primary");
 })
-.catch(function() {
+.then(function() {
+    return tab.waitForSelector(".ui-btn.ui-btn-normal.ui-btn-line-primary.interview-ch-li-cta" , {visible: true});
+})
+.then(function() {
+    return tab.$$(".ui-btn.ui-btn-normal.ui-btn-line-primary.interview-ch-li-cta");
+})
+.then(function(allQuesArray){
+    let allPendingPromises = [];
+    for(let i = 0 ; i < allQuesArray.length ; i++) {
+        let oneATag = allQuesArray[i];
+        let pendingPromise = oneATag.evaluate(function(element){
+            return element.getAttribute("href");
+        } , oneATag);
+        allPendingPromises.push(pendingPromise);
+    }
+
+    let allPromisesCombined = Promise.all(allPendingPromises);
+    return allPromisesCombined;
+})
+.then(function(allQuesLinks){
+    console.log(allQuesLinks);
+})
+.catch(function(err) {
     console.log(err);
 })
 
