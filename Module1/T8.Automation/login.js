@@ -51,10 +51,16 @@ browserOpenPromise.then(function(browser) {
 })
 .then(function(allQuesLinks) {
     let oneQuesSolvePromise = solveQuestion(allQuesLinks[0]);
+    for(let i = 1 ; i < allQuesLinks.length ; i++) {
+        oneQuesSolvePromise = oneQuesSolvePromise.then(function() {
+            let nextQuesSolvePromise = solveQuestion(allQuesLinks[i]);
+            return nextQuesSolvePromise;
+        })
+    }
     return oneQuesSolvePromise;
 })
 .then(function() {
-    console.log("First Ques Solved successfully");
+    console.log("All Ques Solved successfully");
 })
 .catch(function(err) {
     console.log(err);
@@ -135,11 +141,34 @@ function pasteCode() {
     })
 }
 
+function handleLockBtn() {
+    return new Promise(function(scb , fcb) {
+        let waitForLockBtn = tab.waitForSelector(".ui-btn.ui-btn-normal.ui-btn-primary.ui-btn-styled" , {visible:true , timeout:5000});
+        waitForLockBtn.then(function() {
+            return tab.$(".ui-btn.ui-btn-normal.ui-btn-primary.ui-btn-styled");
+        })
+        .then(function(lockButton) {
+            return tab.evaluate(function(elem) { return elem.click() } , lockButton);
+        })
+        .then(function() {
+            console.log("Lock Button Found !!!");
+            scb();
+        })
+        .catch(function() {
+            console.log("Lock Button Not Found !!!");
+            scb();
+        })
+    })
+}
+
 function solveQuestion(questionLink) {
     return new Promise(function(scb , fcb){
         let gotoPromise = tab.goto("https://www.hackerrank.com"+questionLink);
         gotoPromise.then(function() {
             return waitAndClick('a[data-attr2="Editorial"]');
+        })
+        .then(function() {
+            return handleLockBtn();
         })
         .then(function() {
             return getCode();
