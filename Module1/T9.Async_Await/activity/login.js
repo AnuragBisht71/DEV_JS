@@ -8,7 +8,7 @@ const challenges = require("./challenges.js");
         headless : false, 
         defaultViewport : null, 
         args : ["--start-maximized"],
-        slowMo : 10
+
     });
     let pages = await browser.pages();
     let tab = pages[0];
@@ -38,16 +38,14 @@ const challenges = require("./challenges.js");
 
 async function addChallenges(browser , challenges) {
     let newTab = await browser.newPage();
-    await newTab.click("https://www.hackerrank.com/administration/challenges/create");
-
-    let challenge = challenges[0];
-    let challengeName = challenge["Challenge Name"];
-    let description = challenge["Description"];
-    let problemStatement = challenge["Problem Statement"];
-    let inputFormat = challenge["Input Format"];
-    let constraints = challenge["Constraints"];
-    let outputFormat = challenge["Output Format"];
-    let tags = challenge["Tags"];
+    await newTab.goto("https://www.hackerrank.com/administration/challenges/create");
+    let challengeName = challenges["Challenge Name"];
+    let description = challenges["Description"];
+    let problemStatement = challenges["Problem Statement"];
+    let inputFormat = challenges["Input Format"];
+    let constraints = challenges["Constraints"];
+    let outputFormat = challenges["Output Format"];
+    let tags = challenges["Tags"];
 
     await newTab.waitForTimeout(2000);
     await newTab.type("#name" , challengeName);
@@ -59,6 +57,6 @@ async function addChallenges(browser , challenges) {
     await newTab.type("#tags_tagsinput #tags_tag" , tags);
     await newTab.keyboard.press("Enter");
     await newTab.click(".save-challenge.btn.btn-green");
-    await newTab.waitForTimeout(2000);
+    await newTab.waitForTimeout(3000);
     await newTab.close();
 }
