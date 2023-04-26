@@ -23,8 +23,8 @@ const pw = "123456789";
     let bothLi = await tab.$$(".nav-tabs.nav.admin-tabbed-nav li");
     let manageChallengeLi = bothLi[1];
     await manageChallengeLi.click();
-
     await addModerator(browser , tab);
+
 })();
 
 async function addModerator(browser , tab) {
@@ -42,6 +42,18 @@ async function addModerator(browser , tab) {
         let newTab = await browser.newPage();
         await addModeratorToSingleQues(newTab, qLink);
     }
+
+    let allLis = await tab.$$(".pagination li");
+    let nextBtnLi = allLis[allLis.length-2];
+    let isDisabled = await tab.evaluate(function(elem) { return elem.classList.contains("disabled"); } , nextBtnLi);
+    if(isDisabled) {
+        return;
+    }
+    
+    await nextBtnLi.click();
+    await tab.waitForTimeout(3000);
+    await addModerator(browser , tab); 
+
 }
 
 async function addModeratorToSingleQues(newTab, qLink) {
@@ -52,7 +64,7 @@ async function addModeratorToSingleQues(newTab, qLink) {
     await newTab.type("#moderator" , "anurag");
     await newTab.click(".btn.moderator-save");
     await newTab.click(".save-challenge.btn.btn-green");
-    await newTab.waitForTimeout(1000);
+    await newTab.waitForTimeout(2000);
     await newTab.close();
 }
 
