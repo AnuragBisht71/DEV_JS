@@ -38,6 +38,8 @@ function appendTodo(todo) {
     deleteTodoButton.textContent = "Delete";
     // <button class="delete-todo"></button>
 
+    deleteTodoButton.addEventListener( "click" , deleteTodo);
+
     todoItemDiv.append(pTag);
     // <div class="todo-item">
     //     <p class="todo-input"></p>
@@ -51,4 +53,11 @@ function appendTodo(todo) {
 
     todosList.append(todoItemDiv);
 }
+
+function deleteTodo(e) {
+    e.target.parentNode.remove();
+}
+
+
+
 
