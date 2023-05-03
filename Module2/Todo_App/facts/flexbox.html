@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlexBox</title>
+</head>
+<style>
+
+    .flexbox{
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        background-color: blue;
+        height: 500px;
+        /* flex-wrap: wrap; */
+        /* flex-direction: column; */
+    }
+
+    .flexbox-item{
+        background-color: aqua;
+        width: 200px;
+        border: 1px solid;
+    }
+
+    .fbi1{
+        min-height: 100px;
+        /* align-self: center;  -->  Instead of using align-items: center; */
+    }
+    
+    .fbi2{
+        min-height: 200px;
+        /* align-self: flex-start;  -->  Instead of using align-items: center; */
+    }
+
+    .fbi3{
+        min-height: 150px;
+        /* align-self: flex-end;  -->  Instead of using align-items: center; */
+    }
+
+</style>
+<body>
+    <div class="flexbox">
+        <div class="flexbox-item fbi1">Flexbox 1</div>
+        <div class="flexbox-item fbi2">Flexbox 2</div>
+        <div class="flexbox-item fbi3">Flexbox 3</div>
+    </div>
+</body>
+</html>
