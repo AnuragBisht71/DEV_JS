@@ -10,8 +10,6 @@ window.addEventListener("resize" , function() {
 
 let ctx = canvas.getContext("2d");
 
-ctx.fillStyle = "yellow";
-ctx.fillRect(10, 10, 150, 100);
 
 
 
