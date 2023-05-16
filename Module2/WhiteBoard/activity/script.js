@@ -15,7 +15,7 @@ let isPenDown = false;
 canvas.addEventListener("mousedown" , function(e) {
     isPenDown = true;
     let x = e.clientX;
-    let y = e.clientY;
+    let y = e.clientY-100;
     ctx.beginPath();
     ctx.moveTo(x, y);
 });
@@ -23,7 +23,7 @@ canvas.addEventListener("mousedown" , function(e) {
 canvas.addEventListener("mousemove" , function(e) {
     if(isPenDown) {
         let x = e.clientX;
-        let y = e.clientY;
+        let y = e.clientY-100;
         ctx.lineTo(x, y);
         ctx.stroke();
     }
