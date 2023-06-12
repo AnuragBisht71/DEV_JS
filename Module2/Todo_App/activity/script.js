@@ -18,7 +18,7 @@ function addTodo() {
     let todoInputValue = todoInput.value;
     if(todoInputValue) {
         appendTodo(todoInputValue);
-        // Ater click or keypress it will empty the input box
+        // After click or keypress it will empty the input box
         todoInput.value = "";
     }
 }
