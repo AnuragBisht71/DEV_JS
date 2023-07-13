@@ -1,11 +1,11 @@
-function getFirstName(fullName) {
-    fullName = fullName.split(" ");
-    return fullName[0];
+function getFirstName(fullName) { // This is a callback function
+    // fullName = fullName.split(" ");
+    return fullName;
 }
 
-function getLastName(fullName) {
-    fullName = fullName.split(" ");
-    return fullName[1];
+function getLastName(fullName) { // This is a callback function
+    // fullName = fullName.split(" ");
+    return fullName;
 }
 
 function fun(fullName , cb) {
@@ -13,5 +13,5 @@ function fun(fullName , cb) {
     console.log(name);
 }
 
-fun("Anurag Bisht" , getFirstName);
-fun("Mohit Singh" , getLastName);
+fun("Anurag Bisht" , getFirstName); // This is a high order function
+fun("Mohit Singh" , getLastName); // This is a high order function
