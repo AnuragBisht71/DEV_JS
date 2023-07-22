@@ -1,0 +1,18 @@
+* {
+    box-sizing: border-box;
+    margin: 0%;
+    padding: 0%;
+    overflow: hidden;
+}
+
+.tools-container {
+    height: 100px;
+    background-color: aqua;
+}
+
+.drawing-container {
+    background-color: rgb(239, 187, 118);
+}
+
+#canvas {
+}
