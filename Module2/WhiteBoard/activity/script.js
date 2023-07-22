@@ -6,7 +6,7 @@ canvas.height = window.innerHeight - 100;
 window.addEventListener('resize', function () {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight - 100;
-})
+});
 
 let ctx = canvas.getContext("2d");
 
@@ -30,7 +30,7 @@ canvas.addEventListener("mousedown", function (e) {
         type: "md"
     }
     line.push(pointObject);
-})
+});
 
 canvas.addEventListener("mousemove", function (e) {
     if (isPenDown) {
@@ -45,14 +45,14 @@ canvas.addEventListener("mousemove", function (e) {
         }
         line.push(pointObject);
     }
-})
+});
 
 canvas.addEventListener("mouseup", function (e) {
     isPenDown = false;
 
     linesDB.push(line);
     line = [];
-})
+});
 
 
 
