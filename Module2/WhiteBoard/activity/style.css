@@ -26,6 +26,11 @@
     height: 65%;
 }
 
+.tools:hover {
+    border: 3px solid white;
+    border-radius: 10px;
+}
+
 .tools img {
     height: 100%;
     width: 100%;

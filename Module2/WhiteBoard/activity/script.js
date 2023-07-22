@@ -6,10 +6,13 @@ canvas.height = window.innerHeight - 100;
 window.addEventListener('resize', function () {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight - 100;
-});
+})
 
 let ctx = canvas.getContext("2d");
+
+let linesDB = [];
 let isPenDown = false;
+let line = [];
 
 canvas.addEventListener("mousedown", function (e) {
     isPenDown = true;
@@ -17,6 +20,12 @@ canvas.addEventListener("mousedown", function (e) {
     let y = e.clientY - 100;
     ctx.beginPath();
     ctx.moveTo(x, y);
+    let pointObject = {
+        x: x,
+        y: y,
+        type: "md"
+    }
+    line.push(pointObject);
 })
 
 canvas.addEventListener("mousemove", function (e) {
@@ -25,11 +34,20 @@ canvas.addEventListener("mousemove", function (e) {
         let y = e.clientY - 100;
         ctx.lineTo(x, y);
         ctx.stroke();
+        let pointObject = {
+            x: x,
+            y: y,
+            type: "mm"
+        }
+        line.push(pointObject);
     }
 })
 
 canvas.addEventListener("mouseup", function (e) {
     isPenDown = false;
+
+    linesDB.push(line);
+    line = [];
 })
 
 
