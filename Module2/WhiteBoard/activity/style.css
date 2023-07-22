@@ -36,6 +36,12 @@
     width: 100%;
 }
 
+.tools input {
+    position: absolute;
+    top: 90px;
+    left: 480px;
+}
+
 .sticky {
     position: absolute;
     height: 220px;
