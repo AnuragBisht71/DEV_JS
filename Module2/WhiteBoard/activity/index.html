@@ -15,13 +15,33 @@
 <body>
     <div class="tools-container">
         <div class="tools-content">
-            <div class="tools"><img src="./SVG Icons/icons8-pencil-48.png" alt=""></div>
-            <div class="tools"><img src="./SVG Icons/icons8-eraser-64.png" alt=""></div>
+            <div class="tools active-tool" id="pen">
+                <img src="./SVG Icons/icons8-pencil-48.png" alt="">
+                <div class="tool-options hide">
+                    <div class="pen-size">
+                        <input type="range" name="" id="penSize">
+                    </div>
+                    <div class="pen-colors">
+                        <div class="black"></div>
+                        <div class="yellow"></div>
+                        <div class="red"></div>
+                        <div class="blue"></div>
+                        <div class="green"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="tools fade" id="eraser"><img src="./SVG Icons/icons8-eraser-64.png" alt="">
+                <div class="tool-options hide">
+                    <div class="eraser-size">
+                        <input type="range" name="" id="eraserSize">
+                    </div>
+                </div>
+            </div>
             <div class="tools" id="undo"><img src="./SVG Icons/icons8-undo-48.png" alt=""></div>
             <div class="tools" id="redo"><img src="./SVG Icons/icons8-redo-48.png" alt=""></div>
             <div class="tools" id="sticky"><img src="./SVG Icons/icons8-notes-80.png" alt=""></div>
             <div class="tools" id="photo"><img src="./SVG Icons/icons8-image-48.png" alt=""><input type="file" name=""
-                    id="photo-upload">
+                    id="photo-upload" class="hide">
             </div>
             <div class="tools" id="download"><img src="./SVG Icons/icons8-download-64.png" alt=""></div>
         </div>
@@ -34,6 +54,7 @@
     <script src="tools.js"></script>
     <script src="sticky.js"></script>
     <script src="img.js"></script>
+    <script src="drawingTool.js"></script>
 </body>
 
 </html>
