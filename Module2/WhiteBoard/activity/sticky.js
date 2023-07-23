@@ -1,6 +1,6 @@
 let sticky = document.querySelector("#sticky");
 
-sticky.addEventListener("click", function(e) {
+sticky.addEventListener("click", function (e) {
     addSticky();
 });
 
@@ -23,7 +23,7 @@ function addSticky(imageElement) {
     let stickyContent;
 
 
-    if(imageElement) {
+    if (imageElement) {
         let stickyImageDiv = document.createElement("div");
         stickyImageDiv.classList.add("sticky-image-div");
         stickyDiv.append(stickyImageDiv);
