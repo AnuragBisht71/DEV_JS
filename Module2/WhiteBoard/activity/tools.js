@@ -17,10 +17,17 @@ function undoLine() {
 
 function redoLine() {
     if (redoLinesDB.length) {
+
+        let currentLineWidth = ctx.lineWidth;
+        let currentStrokeStyle = ctx.strokeStyle;
+
         let redoLine = redoLinesDB.pop();
         for (let i = 0; i < redoLine.length; i++) {
             let pointObject = redoLine[i];
             if (pointObject.type == "md") {
+                ctx.lineWidth = pointObject.lineWidth;
+                ctx.strokeStyle = pointObject.strokeStyle;
+
                 ctx.beginPath();
                 ctx.moveTo(pointObject.x, pointObject.y);
             }
@@ -30,16 +37,26 @@ function redoLine() {
             }
         }
         linesDB.push(redoLine);
+
+        ctx.lineWidth = currentLineWidth;
+        ctx.strokeStyle = currentStrokeStyle;
     }
 }
 
 
 function drawLinesFromDB() {
+
+    let currentLineWidth = ctx.lineWidth;
+    let currentStrokeStyle = ctx.strokeStyle;
+
     for (let i = 0; i < linesDB.length; i++) {
         let line = linesDB[i];
         for (let i = 0; i < line.length; i++) {
             let pointObject = line[i];
             if (pointObject.type == "md") {
+                ctx.lineWidth = pointObject.lineWidth;
+                ctx.strokeStyle = pointObject.strokeStyle;
+
                 ctx.beginPath();
                 ctx.moveTo(pointObject.x, pointObject.y);
             }
@@ -49,6 +66,9 @@ function drawLinesFromDB() {
             }
         }
     }
+
+    ctx.lineWidth = currentLineWidth;
+    ctx.strokeStyle = currentStrokeStyle;
 }
 
 

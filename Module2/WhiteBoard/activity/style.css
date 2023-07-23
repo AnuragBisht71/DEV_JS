@@ -21,8 +21,8 @@ body {
     align-items: center;
     height: 75%;
     width: 70%;
-    border-radius: 20px;
-    background-color: wheat;
+    border-radius: 15px;
+    background-color: #f9ebd2;
 }
 
 .tools {
@@ -109,7 +109,7 @@ body {
     height: 100px;
     width: 100px;
     position: absolute;
-    background-color: bisque;
+    background-color: #f9ebd2;
     top: 65px;
     border-radius: 10px;
     display: flex;
