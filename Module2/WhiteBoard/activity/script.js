@@ -16,7 +16,7 @@ let isPenDown = false;
 let line = [];
 
 canvas.addEventListener("mousedown", function (e) {
-    if(redoLinesDB.length) {
+    if (redoLinesDB.length) {
         redoLinesDB = [];
     }
     isPenDown = true;

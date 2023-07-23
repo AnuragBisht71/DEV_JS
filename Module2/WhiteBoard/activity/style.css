@@ -2,6 +2,9 @@
     box-sizing: border-box;
     margin: 0%;
     padding: 0%;
+}
+
+body {
     overflow: hidden;
 }
 
@@ -24,6 +27,8 @@
 
 .tools {
     height: 65%;
+    width: 7%;
+    position: relative;
 }
 
 .tools:hover {
@@ -34,12 +39,6 @@
 .tools img {
     height: 100%;
     width: 100%;
-}
-
-.tools input {
-    position: absolute;
-    top: 90px;
-    left: 480px;
 }
 
 .sticky {
@@ -87,4 +86,14 @@
     padding: 10px;
     font-size: 20px;
     overflow: auto;
+}
+
+.sticky-image-div {
+    height: 87%;
+}
+
+.sticky-image {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
 }

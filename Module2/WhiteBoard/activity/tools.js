@@ -16,11 +16,11 @@ function undoLine() {
 
 
 function redoLine() {
-    if(redoLinesDB.length) {
+    if (redoLinesDB.length) {
         let redoLine = redoLinesDB.pop();
-        for(let i = 0 ; i < redoLine.length ; i++) {
+        for (let i = 0; i < redoLine.length; i++) {
             let pointObject = redoLine[i];
-            if(pointObject.type == "md") {
+            if (pointObject.type == "md") {
                 ctx.beginPath();
                 ctx.moveTo(pointObject.x, pointObject.y);
             }
