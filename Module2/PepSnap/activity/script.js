@@ -1,5 +1,6 @@
 let videoElement = document.querySelector("video");
 let recordButton = document.querySelector("#record");
+let photoButton = document.querySelector("#photo");
 recordingState = false;
 let mediaRecorder;
 
@@ -17,7 +18,12 @@ let mediaRecorder;
         console.log("Inside on data available");
         console.log(e.data);
         let videoObj = new Blob([e.data], { type: "video/mp4" });
-        console.log(videoObj);
+        // console.log(videoObj);
+        let videoURL = URL.createObjectURL(videoObj);
+        let aTag = document.createElement("a");
+        aTag.download = "video.mp4";
+        aTag.href = videoURL;
+        aTag.click();
     }
 
     mediaRecorder.onstop = function () {
