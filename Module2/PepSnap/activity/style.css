@@ -71,6 +71,7 @@ video {
     animation-iteration-count: 1;
 }
 
+
 @keyframes scaleInScaleOut {
     0% {
         transform: scale(1);
