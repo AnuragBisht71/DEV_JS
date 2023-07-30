@@ -1,6 +1,8 @@
 let videoElement = document.querySelector("video");
 let recordButton = document.querySelector(".inner-record");
 let capturePhoto = document.querySelector(".inner-capture");
+let allFilters = document.querySelectorAll(".filter");
+let filterSelected = "none";
 recordingState = false;
 let mediaRecorder;
 
@@ -65,3 +67,40 @@ let mediaRecorder;
         aTag.click();
     });
 })();
+
+
+for (let i = 0; i < allFilters.length; i++) {
+    allFilters[i].addEventListener("click", function (e) {
+        let currentFilterSelected = e.target.style.backgroundColor;
+
+        if (currentFilterSelected == "") {
+            if (document.querySelector(".filter-div")) {
+                document.querySelector(".filter-div").remove();
+                filterSelected = "none";
+                return;
+            }
+        }
+
+        if (filterSelected == currentFilterSelected) {
+            return;
+        }
+
+        let filterDiv = document.createElement("div");
+        filterDiv.classList.add("filter-div");
+        filterDiv.style.backgroundColor = currentFilterSelected;
+
+        if (filterSelected == "none") {
+            document.body.append(filterDiv);
+        }
+        else {
+            document.querySelector(".filter-div").remove();
+            document.body.append(filterDiv);
+        }
+
+        filterSelected = currentFilterSelected;
+    });
+}
+
+
+
+
