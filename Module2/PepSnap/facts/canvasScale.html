@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas Scale</title>
+</head>
+<style>
+    * {
+        margin: 0px;
+    }
+</style>
+<body>
+    <canvas></canvas>
+    <script>
+        let canvas = document.querySelector('canvas');
+        let ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        let img = document.createElement('img');
+        img.src = "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg";
+
+        ctx.translate(canvas.width/2 , canvas.height/2);
+        ctx.scale(2,2);
+        ctx.translate(-canvas.width/2 , -canvas.height/2);
+
+        img.onload = function() {
+            ctx.drawImage(img, 0 , 0);
+        }
+    </script>
+</body>
+</html>
