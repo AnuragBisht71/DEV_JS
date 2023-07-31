@@ -29,7 +29,7 @@ video {
 
 .filter {
     height: 13vh;
-    width: 10vw;
+    width: 9vw;
     background-image: url("https://images.pexels.com/photos/3408744/pexels-photo-3408744.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500");
     background-size: cover;
     background-blend-mode: soft-light;

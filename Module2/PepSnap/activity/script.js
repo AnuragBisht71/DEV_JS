@@ -61,6 +61,11 @@ let mediaRecorder;
         let ctx = canvas.getContext("2d");
         ctx.drawImage(videoElement, 0, 0);
 
+        if (filterSelected != "none") {
+            ctx.fillStyle = filterSelected;
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+        }
+
         let aTag = document.createElement("a");
         aTag.download = `image${Date.now()}.jpg`;
         aTag.href = canvas.toDataURL("image/jpg");
@@ -73,7 +78,7 @@ for (let i = 0; i < allFilters.length; i++) {
     allFilters[i].addEventListener("click", function (e) {
         let currentFilterSelected = e.target.style.backgroundColor;
 
-        if (currentFilterSelected == "") {
+        if (currentFilterSelected == "") { // for no filter option
             if (document.querySelector(".filter-div")) {
                 document.querySelector(".filter-div").remove();
                 filterSelected = "none";
