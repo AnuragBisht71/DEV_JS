@@ -6,11 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PepSnap</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
     <div class="video-container">
-        <video autoplay></video>
+        <video autoplay style="transform: scale(1);"></video>
     </div>
     <div class="video-filters">
         <div class="filter one" style="background-color: rgb(255, 0, 0, 0.2);"></div>
@@ -21,9 +24,19 @@
         <div class="filter"></div>
     </div>
     <div class="controls">
+        <div class="zoom">
+            <div class="zoom-in">
+                <i class="fa-solid fa-plus"></i>
+            </div>
+            <div class="zoom-out">
+                <i class="fa-solid fa-minus"></i>
+            </div>
+        </div>
+
         <div id="record">
             <div class="inner-record"></div>
         </div>
+
         <div id="capture">
             <div class="inner-capture"></div>
         </div>

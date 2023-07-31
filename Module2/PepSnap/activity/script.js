@@ -2,6 +2,9 @@ let videoElement = document.querySelector("video");
 let recordButton = document.querySelector(".inner-record");
 let capturePhoto = document.querySelector(".inner-capture");
 let allFilters = document.querySelectorAll(".filter");
+let zoomIn = document.querySelector(".zoom-in");
+let zoomOut = document.querySelector(".zoom-out");
+
 let filterSelected = "none";
 recordingState = false;
 let mediaRecorder;
@@ -106,6 +109,24 @@ for (let i = 0; i < allFilters.length; i++) {
     });
 }
 
+let minZoom = 1.2;
+let maxZoom = 3.1;
+let currentZoom = 1;
 
+zoomIn.addEventListener("click", function (e) {
+    if (currentZoom + 0.1 > maxZoom) {
+        return;
+    }
+    currentZoom = currentZoom + 0.1;
+    videoElement.style.transform = `scale(${currentZoom})`;
+});
+
+zoomOut.addEventListener("click", function (e) {
+    if (currentZoom + 0.1 < minZoom) {
+        return;
+    }
+    currentZoom = currentZoom - 0.1;
+    videoElement.style.transform = `scale(${currentZoom})`;
+});
 
 
