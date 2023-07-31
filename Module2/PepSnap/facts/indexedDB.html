@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IndexedDB</title>
+</head>
+
+<body>
+    <div>DBName :<input type="text" name="" id="dbname"></div>
+    <div>DBVersion :<input type="text" name="" id="dbversion"></div>
+    <button id="opendb">Open DB</button>
+
+    <div>Media ID :<input type="text" name="" id="media-id"></div>
+    <div>Media Type :<input type="text" name="" id="media-type"></div>
+    <button id="add-media">Add Media</button>
+
+    <div>
+        <button id="show-media">Show Media</button>
+    </div>
+
+    <script>
+        let dbName = document.getElementById("dbname");
+        let dbVersion = document.getElementById("dbversion");
+        let opendbButton = document.getElementById("opendb");
+
+        let mid = document.getElementById("media-id");
+        let mediaType = document.getElementById("media-type");
+        let addMediaButton = document.getElementById("add-media");
+
+        let showMediaButton = document.getElementById("show-media");
+
+        let db;
+
+        opendbButton.addEventListener("click", openDB);
+        addMediaButton.addEventListener("click", addMedia);
+        showMediaButton.addEventListener("click", showMedia);
+
+        function openDB() {
+            let dbopenRequest = indexedDB.open(dbName.value, dbVersion.value);
+            console.log(dbopenRequest);
+
+            dbopenRequest.onupgradeneeded = function (e) {
+                alert("Inside on upgrade needed!!!");
+                db = e.target.result;
+                db.createObjectStore("Media", { keyPath: "mid" });
+            }
+
+            dbopenRequest.onsuccess = function (e) {
+                alert("Inside on success!!!");
+                db = e.target.result;
+            }
+
+            dbopenRequest.onerror = function (e) {
+                alert("Inside on error!!!");
+            }
+        };
+
+        function addMedia() {
+            let txnObject = db.transaction("Media", "readwrite");
+            let mediaTable = txnObject.objectStore("Media");
+            mediaTable.add({mid: mid.value , type: mediaType.value});
+
+            txnObject.onerror = function(e) {
+                console.log("txn failed!!!");
+                console.log(e);
+            }
+        }
+
+        function showMedia() {
+            let txnObject = db.transaction("Media" , "readonly");
+            let mediaTable = txnObject.objectStore("Media");
+
+            let cursorObject = mediaTable.openCursor();
+            cursorObject.onsuccess = function(e) {
+                let cursor = cursorObject.result;
+                if(cursor) {
+                    console.log(cursor.value);
+                    cursor.continue();
+                }
+            }
+        }
+
+
+    </script>
+</body>
+
+</html>
