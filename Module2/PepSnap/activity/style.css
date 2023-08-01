@@ -38,9 +38,9 @@ video {
 
 .controls {
     position: absolute;
-    top: 24vh;
+    top: 15vh;
     right: 4vw;
-    height: 300px;
+    height: 500px;
     width: 130px;
     display: flex;
     flex-direction: column;
@@ -50,7 +50,7 @@ video {
 }
 
 .controls>div {
-    height: 30%;
+    height: 18%;
     width: 70%;
     display: flex;
     justify-content: center;
@@ -129,4 +129,13 @@ video {
 
 .fa-solid {
     font-size: 2rem;
+}
+
+.gallery-btn {
+    color: white;
+    border: 2px solid white;
+    border-radius: 50%;
+    cursor: pointer;
+    background-color: black;
+    font-size: 20px;
 }

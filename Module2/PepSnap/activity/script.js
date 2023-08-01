@@ -4,6 +4,11 @@ let capturePhoto = document.querySelector(".inner-capture");
 let allFilters = document.querySelectorAll(".filter");
 let zoomIn = document.querySelector(".zoom-in");
 let zoomOut = document.querySelector(".zoom-out");
+let galleryBtn = document.querySelector(".gallery-btn");
+
+galleryBtn.addEventListener("click", function (e) {
+    window.location.assign("gallery.html");
+});
 
 let filterSelected = "none";
 recordingState = false;
