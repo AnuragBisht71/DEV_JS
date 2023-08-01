@@ -55,6 +55,7 @@
 
 .media-buttons div {
     padding: 10px;
+    cursor: pointer;
 }
 
 .download-media {
