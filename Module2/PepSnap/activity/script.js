@@ -24,63 +24,25 @@ let mediaRecorder;
         console.log(e.data);
         let videoObj = new Blob([e.data], { type: "video/mp4" });
         // console.log(videoObj);
-        let videoURL = URL.createObjectURL(videoObj);
-        let aTag = document.createElement("a");
-        aTag.download = `video${Date.now()}.mp4`;
-        aTag.href = videoURL;
-        aTag.click();
+
+        // download video
+        // let videoURL = URL.createObjectURL(videoObj);
+        // let aTag = document.createElement("a");
+        // aTag.download = `video${Date.now()}.mp4`;
+        // aTag.href = videoURL;
+        // aTag.click();
+
+        // save video to db
+        addMedia(videoObj, "video");
     }
 
     mediaRecorder.onstop = function () {
         console.log("Inside on stop");
     }
 
-    recordButton.addEventListener("click", function () {
-        if (recordingState) {
-            // already recording started
-            mediaRecorder.stop();
-            recordingState = false;
-            recordButton.classList.remove("animate-record");
-        }
-        else {
-            // start the recording
-            mediaRecorder.start();
-            recordingState = true;
-            recordButton.classList.add("animate-record");
-        }
-    });
+    recordButton.addEventListener("click", recordVideoFun);
 
-    capturePhoto.addEventListener("click", function () {
-        capturePhoto.classList.add("animate-capture");
-
-        setTimeout(function () {
-            capturePhoto.classList.remove("animate-capture");
-        }, 1000);
-
-        let canvas = document.createElement("canvas");
-        canvas.width = 640;
-        canvas.height = 480;
-
-        let ctx = canvas.getContext("2d");
-
-        if (currentZoom != 1) {
-            ctx.translate(canvas.width/2, canvas.height/2);
-            ctx.scale(currentZoom, currentZoom);
-            ctx.translate(-canvas.width/2, -canvas.height/2);
-        }
-
-        ctx.drawImage(videoElement, 0, 0);
-
-        if (filterSelected != "none") {
-            ctx.fillStyle = filterSelected;
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-        }
-
-        let aTag = document.createElement("a");
-        aTag.download = `image${Date.now()}.jpg`;
-        aTag.href = canvas.toDataURL("image/jpg");
-        aTag.click();
-    });
+    capturePhoto.addEventListener("click", capturePhotoFun);
 })();
 
 
@@ -136,4 +98,63 @@ zoomOut.addEventListener("click", function (e) {
     videoElement.style.transform = `scale(${currentZoom})`;
 });
 
+
+function recordVideoFun() {
+    if (recordingState) {
+        // already recording started
+        mediaRecorder.stop();
+        recordingState = false;
+        recordButton.classList.remove("animate-record");
+    }
+    else {
+        // start the recording
+        mediaRecorder.start();
+        recordingState = true;
+        recordButton.classList.add("animate-record");
+    }
+}
+
+
+function capturePhotoFun() {
+    capturePhoto.classList.add("animate-capture");
+
+    setTimeout(function () {
+        capturePhoto.classList.remove("animate-capture");
+    }, 1000);
+
+    let canvas = document.createElement("canvas");
+    canvas.width = 640;
+    canvas.height = 480;
+
+    let ctx = canvas.getContext("2d");
+
+    if (currentZoom != 1) {
+        ctx.translate(canvas.width / 2, canvas.height / 2);
+        ctx.scale(currentZoom, currentZoom);
+        ctx.translate(-canvas.width / 2, -canvas.height / 2);
+    }
+
+    ctx.drawImage(videoElement, 0, 0);
+
+    if (filterSelected != "none") {
+        ctx.fillStyle = filterSelected;
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+    }
+
+    // download image as canvas
+    // let aTag = document.createElement("a");
+    // aTag.download = `image${Date.now()}.jpg`;
+    // aTag.href = canvas.toDataURL("image/jpg");
+    // aTag.click();
+
+    // save image to db
+    let canvasURL = canvas.toDataURL("image/jpg");
+    addMedia(canvasURL, "image");
+}
+
+function addMedia(mediaURL, mediaType) {
+    let txnObject = db.transaction("Media", "readwrite");
+    let mediaTable = txnObject.objectStore("Media");
+    mediaTable.add({ mid: Date.now(), type: mediaType, url: mediaURL });
+}
 
