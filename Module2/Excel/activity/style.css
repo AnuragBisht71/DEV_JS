@@ -46,6 +46,7 @@
     background-color: lightgray;
     height: 25px;
     width: 30px;
+    position: absolute;
 }
 
 .top-row {
@@ -65,6 +66,8 @@
 }
 
 .left-col {
+    position: absolute;
+    top: 25px;
 }
 
 .left-col-cell {
