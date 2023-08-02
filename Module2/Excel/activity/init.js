@@ -19,7 +19,7 @@ function initCells() {
     for (let i = 0; i < 100; i++) {
         cellsContent += '<div class= "row">';
         for (let j = 0; j < 26; j++) {
-            cellsContent += `<div class= "cell" contenteditable = "true"></div>`;
+            cellsContent += `<div class= "cell" contenteditable = "true" spellcheck= "false"></div>`;
         }
         cellsContent += "</div>";
     }

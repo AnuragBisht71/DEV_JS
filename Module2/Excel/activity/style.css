@@ -40,6 +40,10 @@
     min-width: 70px;
     min-height: 25px;
     outline: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
 
 .top-left-cell {
@@ -47,6 +51,7 @@
     height: 25px;
     width: 30px;
     position: absolute;
+    z-index: 3;
 }
 
 .top-row {
@@ -54,6 +59,8 @@
     position: absolute;
     top: 0px;
     left: 30px;
+    background-color: white;
+    z-index: 2;
 }
 
 .top-row-cell {
@@ -68,6 +75,8 @@
 .left-col {
     position: absolute;
     top: 25px;
+    z-index: 2;
+    background-color: white;
 }
 
 .left-col-cell {
