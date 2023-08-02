@@ -11,3 +11,23 @@ cellsContainer.addEventListener("scroll", function (e) {
     topRow.style.top = topOffset + "px";
     leftCol.style.left = leftOffset + "px";
 });
+
+let allCells = document.querySelectorAll(".cell");
+
+for (let i = 0; i < allCells.length; i++) {
+    allCells[i].addEventListener("blur", function (e) {
+        let cellValueFromUI = e.target.textContent;
+        let rowId = e.target.getAttribute("rowid");
+        let colId = e.target.getAttribute("colid");
+
+        if (cellValueFromUI) {
+            let cellObject = db[rowId][colId];
+            cellObject.value = cellValueFromUI;
+        };
+    });
+}
+
+
+
+
+
