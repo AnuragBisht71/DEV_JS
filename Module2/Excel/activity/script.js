@@ -51,8 +51,11 @@ for (let i = 0; i < allCells.length; i++) {
 }
 
 function solveFormula(formula) {
+    // ( A1 + A2 )
+
     let formulaComps = formula.split(" ");
 
+    // {"(" , "A1" , "A2" , ")"}
     for (let i = 0; i < formulaComps.length; i++) {
         let fComps = formulaComps[i];
 
@@ -74,8 +77,9 @@ function getCellObjectFromElement(element) {
 }
 
 function getCellObjectFromName(name) {
-    let rowId = Number(name.substring(1)) - 1;
+    // A1
     let colId = name.charCodeAt(0) - 65;
+    let rowId = Number(name.substring(1)) - 1;
     return db[rowId][colId];
 }
 

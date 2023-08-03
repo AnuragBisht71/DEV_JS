@@ -37,7 +37,7 @@ function initDB() {
             let cellObject = {
                 name: cellName,
                 value: "",
-                formule: "",
+                formula: "",
             };
             row.push(cellObject);
         }
