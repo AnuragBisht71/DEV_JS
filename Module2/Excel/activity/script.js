@@ -48,11 +48,35 @@ for (let i = 0; i < allCells.length; i++) {
 
         if (cellValueFromUI) {
             let cellObject = getCellObjectFromElement(e.target);
+
+            if (cellObject.formula && cellValueFromUI != cellObject.value) {
+                deleteFormula(cellObject);
+                formulaInput.value = "";
+            }
+
+            // Cell object ki value update
             cellObject.value = cellValueFromUI;
 
             updateChildrens(cellObject.childrens);
         };
     });
+}
+
+function deleteFormula(cellObject) {
+    cellObject.formula = "";
+    for (let i = 0; i < cellObject.parents.length; i++) {
+        let parentName = cellObject.parents[i];
+
+        let parentCellObject = getCellObjectFromName(parentName);
+        let updatedChildrens = parentCellObject.childrens.filter(function (childName) {
+            if (childName == cellObject.name) {
+                return false;
+            }
+            return true;
+        });
+        parentCellObject.childrens = updatedChildrens;
+    }
+    cellObject.parents = [];
 }
 
 function solveFormula(formula, selfCellObject) {
@@ -70,6 +94,7 @@ function solveFormula(formula, selfCellObject) {
             if (selfCellObject) {
                 // add yourself as a child of parentCellObject
                 parentCellObject.childrens.push(selfCellObject.name);
+                selfCellObject.parents.push(parentCellObject.name);
             }
             formula = formula.replace(fComps, value);
         }
