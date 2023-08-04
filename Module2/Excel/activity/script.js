@@ -28,6 +28,9 @@ formulaInput.addEventListener("blur", function (e) {
         // DB Update
         cellObject.value = calculatedValue;
         cellObject.formula = formula;
+
+        // Childrens Update
+        updateChildrens(cellObject.childrens);
     }
 });
 
