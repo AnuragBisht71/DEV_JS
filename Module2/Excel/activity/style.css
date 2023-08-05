@@ -21,8 +21,35 @@
 }
 
 .sheets {
-    background-color: cadetblue;
+    background-color: darkgrey;
     height: 30px;
+    display: flex;
+    align-items: center;
+}
+
+.add-sheets {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.sheets-list {
+    display: flex;
+    height: 100%;
+    border-left: 1px solid;
+}
+
+.sheet {
+    border-right: 1px solid;
+    height: 100%;
+    width: 75px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.active-sheet {
+    background-color: white;
 }
 
 .all-cells {
