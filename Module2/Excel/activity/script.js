@@ -63,7 +63,16 @@ function attachClickAndBlurEventOnCell() {
                 // Cell object ki value update
                 cellObject.value = cellValueFromUI;
 
+                // update childrens of the current updated cell
                 updateChildrens(cellObject.childrens);
+
+                // handle visited cells
+                let rowId = lastSelectedCell.getAttribute("rowid");
+                let colId = lastSelectedCell.getAttribute("colid");
+                if (!cellObject.visited) {
+                    visitedCells.push({ rowId, colId });
+                    cellObject.visited = true;
+                }
             };
         });
     }
