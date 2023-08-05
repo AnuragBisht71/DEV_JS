@@ -1,4 +1,6 @@
 let cellsContainer = document.querySelector(".cells");
+let sheetsDB = [];
+let db;
 
 function initCells() {
     let cellsContent = '<div class= "top-left-cell"></div>';
@@ -45,7 +47,7 @@ function initDB() {
         }
         db.push(row);
     }
-    console.log(db);
+    sheetsDB.push(db);
 }
 
 initCells();

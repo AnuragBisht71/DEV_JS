@@ -39,33 +39,37 @@ formulaInput.addEventListener("blur", function (e) {
     }
 });
 
-for (let i = 0; i < allCells.length; i++) {
-    allCells[i].addEventListener("click", function (e) {
-        let cellObject = getCellObjectFromElement(e.target);
-        address.value = cellObject.name;
-        formulaInput.value = cellObject.formula;
-    });
-
-    allCells[i].addEventListener("blur", function (e) {
-        lastSelectedCell = e.target;
-
-        let cellValueFromUI = e.target.textContent;
-
-        if (cellValueFromUI) {
+function attachClickAndBlurEventOnCell() {
+    for (let i = 0; i < allCells.length; i++) {
+        allCells[i].addEventListener("click", function (e) {
             let cellObject = getCellObjectFromElement(e.target);
+            address.value = cellObject.name;
+            formulaInput.value = cellObject.formula;
+        });
 
-            if (cellObject.formula && cellValueFromUI != cellObject.value) {
-                deleteFormula(cellObject);
-                formulaInput.value = "";
-            }
+        allCells[i].addEventListener("blur", function (e) {
+            lastSelectedCell = e.target;
 
-            // Cell object ki value update
-            cellObject.value = cellValueFromUI;
+            let cellValueFromUI = e.target.textContent;
 
-            updateChildrens(cellObject.childrens);
-        };
-    });
+            if (cellValueFromUI) {
+                let cellObject = getCellObjectFromElement(e.target);
+
+                if (cellObject.formula && cellValueFromUI != cellObject.value) {
+                    deleteFormula(cellObject);
+                    formulaInput.value = "";
+                }
+
+                // Cell object ki value update
+                cellObject.value = cellValueFromUI;
+
+                updateChildrens(cellObject.childrens);
+            };
+        });
+    }
 }
+
+attachClickAndBlurEventOnCell();
 
 function deleteFormula(cellObject) {
     cellObject.formula = "";
