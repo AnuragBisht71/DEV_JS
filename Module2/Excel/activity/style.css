@@ -24,14 +24,13 @@ body {
     height: 70%;
 }
 
-.menu-options-1>div,
-.menu-options-1>div:hover {
+.menu-options-1>div {
     height: 75%;
     width: 25%;
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 3px;
+    border-radius: 4px;
 }
 
 .menu-options-1>div:hover,
@@ -156,4 +155,8 @@ body {
     height: 23px;
     border: 1px solid;
     text-align: center;
+}
+
+.active-menu {
+    background-color: lightgray;
 }

@@ -85,6 +85,7 @@ function cleanUI() {
         let { rowId, colId } = visitedCells[i];
         let idx = Number(rowId) * 26 + Number(colId);
         allCells[idx].innerHTML = "";
+        allCells[idx].style = "";
     }
 }
 

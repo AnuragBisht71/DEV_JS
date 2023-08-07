@@ -44,6 +44,7 @@ function initDB() {
                 childrens: [],
                 parents: [],
                 visited: false,
+                fontStyles: { bold: false, italic: false, underline: false },
             };
             row.push(cellObject);
         }
