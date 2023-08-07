@@ -53,10 +53,10 @@ function attachClickAndBlurEventOnCell() {
                 }
             }
 
-            let { bold, italic, underline } = cellObject.fontStyles;
+            let { bold, underline, italic } = cellObject.fontStyles;
             bold && document.querySelector(".bold").classList.add("active-menu");
-            italic && document.querySelector(".italic").classList.add("active-menu");
             underline && document.querySelector(".underline").classList.add("active-menu");
+            italic && document.querySelector(".italic").classList.add("active-menu");
         });
 
         allCells[i].addEventListener("blur", function (e) {
