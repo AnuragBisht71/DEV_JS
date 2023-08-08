@@ -16,5 +16,76 @@
 
 .right-view {
     width: 75%;
-    background-color: aquamarine;
+    background-color: cadetblue;
+}
+
+.chat-list {
+    height: 90%;
+    width: 100%;
+    padding: 10px;
+    overflow: auto;
+}
+
+.chat {
+    color: white;
+    margin-top: 15px;
+    min-height: 30px;
+    padding: 5px;
+    border-radius: 10px;
+    width: 200px;
+    word-break: break-all;
+    clear: both;
+}
+
+.join {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: chocolate;
+    margin: auto;
+    margin-top: 15px;
+    width: 80%;
+}
+
+.leave {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: darkmagenta;
+    margin: auto;
+    margin-top: 15px;
+    width: 80%;
+}
+
+.left {
+    display: flex;
+    align-items: center;
+    background-color: dimgrey;
+}
+
+.right {
+    background-color: lightgreen;
+    display: flex;
+    align-items: center;
+    float: right;
+}
+
+.chat-input-box {
+    height: 10%;
+    background-color: cadetblue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.chat-input-box input {
+    height: 65%;
+    width: 80%;
+    outline: none;
+    border: none;
+    padding: 10px;
+    background-color: darkslategray;
+    color: white;
+    border-radius: 15px;
+    font-size: 1.1rem;
 }
