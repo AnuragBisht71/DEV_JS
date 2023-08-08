@@ -31,7 +31,7 @@
     margin-top: 15px;
     min-height: 30px;
     padding: 5px;
-    border-radius: 10px;
+    border-radius: 8px;
     width: 200px;
     word-break: break-all;
     clear: both;
@@ -64,7 +64,7 @@
 }
 
 .right {
-    background-color: lightgreen;
+    background-color: darkgreen;
     display: flex;
     align-items: center;
     float: right;
@@ -87,5 +87,5 @@
     background-color: darkslategray;
     color: white;
     border-radius: 15px;
-    font-size: 1.1rem;
+    font-size: 1rem;
 }
