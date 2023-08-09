@@ -1,8 +1,10 @@
+let name = prompt("Enter Your Name !");
+
 let chatInputBox = document.querySelector(".chat-input");
 let chatList = document.querySelector(".chat-list");
 
-chatInputBox.addEventListener("keypress" , function(e) {
-    if(e.key == "Enter" && chatInputBox.value) {
+chatInputBox.addEventListener("keypress", function (e) {
+    if (e.key == "Enter" && chatInputBox.value) {
         let chatRight = document.createElement("div");
         chatRight.classList.add("chat");
         chatRight.classList.add("right");
