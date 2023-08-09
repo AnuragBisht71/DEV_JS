@@ -10,6 +10,7 @@ chatInputBox.addEventListener("keypress", function (e) {
         chatRight.classList.add("right");
         chatRight.innerHTML = chatInputBox.value;
         chatList.append(chatRight);
+        socket.emit("chat-append", chatInputBox.value);
         chatInputBox.value = "";
     }
 });
