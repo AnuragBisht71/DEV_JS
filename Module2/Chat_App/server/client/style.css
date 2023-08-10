@@ -10,12 +10,13 @@
 }
 
 .left-view {
-    width: 25%;
+    width: 20%;
     background-color: antiquewhite;
+    overflow: auto;
 }
 
 .right-view {
-    width: 75%;
+    width: 80%;
     background-color: cadetblue;
 }
 
@@ -88,4 +89,28 @@
     color: white;
     border-radius: 15px;
     font-size: 1rem;
+}
+
+.profile {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    height: 40%;
+    width: 100%;
+    border-bottom: 1px solid;
+}
+
+.profile-img {
+    height: 80%;
+    width: 77%;
+}
+
+.profile-name {
+    font-size: 1.3rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
 }
