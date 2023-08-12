@@ -25,7 +25,6 @@ socket.on("user-leave", function (name) {
     chatLeave.classList.add("leave");
     chatLeave.innerHTML = name + " left chat";
     chatList.append(chatLeave);
-    document.querySelector(".left-view").removeChild(profileDiv);
 });
 
 socket.on("append-chat", function ({ name, chat }) {
