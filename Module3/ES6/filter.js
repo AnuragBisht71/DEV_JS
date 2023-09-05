@@ -28,6 +28,7 @@ function myFilter(arr, f) {
     return ans;
 }
 
+
 console.log("Created filter function");
 console.log(a);
 console.log(myFilter(a, isEven));
